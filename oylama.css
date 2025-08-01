@@ -1,0 +1,411 @@
+/* Oylama Sayfası Özel Stilleri */
+
+/* Header'ı sabit olmaktan çıkar */
+body header {
+    position: relative !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+body header.scrolled {
+    position: relative !important;
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+/* Oylama Hero Bölümü */
+#oylama-hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+#oylama-hero .hero-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    color: #d4a373;
+}
+
+#oylama-hero .hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
+
+.oylama-tarihi {
+    background: rgba(212, 163, 115, 0.2);
+    padding: 10px 20px;
+    border-radius: 25px;
+    display: inline-block;
+    font-weight: 600;
+    border: 2px solid #d4a373;
+}
+
+/* Oylama Bölümü */
+#oylama-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.oylama-baslik {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.oylama-baslik h2 {
+    font-size: 2.5rem;
+    color: #d4a373;
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.oylama-baslik p {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+/* Oylama Durumu */
+.oylama-durumu {
+    background: rgba(212, 163, 115, 0.1);
+    border: 2px solid #d4a373;
+    border-radius: 15px;
+    padding: 1rem 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.durum-mesaji {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#durum-text {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #d4a373;
+}
+
+#kalan-sure {
+    font-weight: 600;
+    color: #fff;
+    background: #d4a373;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+/* Oylama Grid */
+.oylama-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Oylama Kartları */
+.oylama-kart {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 3px solid transparent;
+    position: relative;
+}
+
+.oylama-kart:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(212, 163, 115, 0.3);
+}
+
+.oylama-kart.secili {
+    border-color: #d4a373;
+    box-shadow: 0 0 20px rgba(212, 163, 115, 0.5);
+}
+
+.oylama-kart.secili::before {
+    content: '✓';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #d4a373;
+    color: #1a1a1a;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.kart-resim {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.kart-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    padding: 2rem 1.5rem 1rem;
+}
+
+.kart-baslik {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.kart-aciklama {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.4;
+}
+
+.kart-bilgi {
+    padding: 1.5rem;
+}
+
+.kart-detay {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+/* Oylama Butonu */
+.oylama-buton-container {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.oy-ver-btn {
+    background: linear-gradient(45deg, #d4a373, #e6b887);
+    color: #1a1a1a;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 200px;
+    justify-content: center;
+}
+
+.oy-ver-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 163, 115, 0.4);
+}
+
+.oy-ver-btn:disabled {
+    background: #666;
+    color: #999;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+/* Sonuçlar Bölümü */
+.sonuclar-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.sonuclar-section h3 {
+    text-align: center;
+    font-size: 2rem;
+    color: #d4a373;
+    margin-bottom: 2rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.sonuc-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.sonuc-resim {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.sonuc-bilgi {
+    flex: 1;
+}
+
+.sonuc-isim {
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.sonuc-bar-container {
+    background: rgba(255, 255, 255, 0.1);
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.sonuc-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #d4a373, #e6b887);
+    border-radius: 4px;
+    transition: width 1s ease;
+}
+
+.sonuc-yuzde {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.toplam-oy {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(212, 163, 115, 0.3);
+    font-size: 1.2rem;
+    color: #d4a373;
+}
+
+/* Mesaj Stilleri */
+.tesekkur-mesaji, .hata-mesaji {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 2rem 0;
+}
+
+.tesekkur-mesaji {
+    background: rgba(76, 175, 80, 0.1);
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+}
+
+.hata-mesaji {
+    background: rgba(244, 67, 54, 0.1);
+    border: 2px solid #f44336;
+    color: #f44336;
+}
+
+.mesaj-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.tesekkur-mesaji h3, .hata-mesaji h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    #oylama-hero .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .oylama-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .durum-mesaji {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+    
+    .oylama-baslik h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #oylama-hero .hero-text h1 {
+        font-size: 2rem;
+    }
+    
+    .oy-ver-btn {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    
+    .sonuc-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .sonuc-resim {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(212, 163, 115, 0.3);
+    border-radius: 50%;
+    border-top-color: #d4a373;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Oylama Kapalı Durumu */
+.oylama-kapali .oylama-kart {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.oylama-kapali .oylama-kart:hover {
+    transform: none;
+    box-shadow: none;
+}

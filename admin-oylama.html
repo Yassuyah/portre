@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Haftanın Oylaması</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin-oylama.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="Portre_Logo PNG.png" alt="Portre Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="haftanin-oylamasi.html">Oylama Sayfası</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="#" id="logout-btn">Çıkış</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Admin Panel -->
+    <section id="admin-panel">
+        <div class="container">
+            <!-- Giriş Formu -->
+            <div id="login-form" class="login-container">
+                <div class="login-box">
+                    <h2>Admin Girişi</h2>
+                    <form id="admin-login">
+                        <div class="form-group">
+                            <label for="admin-password">Şifre:</label>
+                            <input type="password" id="admin-password" required>
+                        </div>
+                        <button type="submit" class="login-btn">Giriş Yap</button>
+                    </form>
+                    <div id="login-error" class="error-message" style="display: none;">
+                        Hatalı şifre!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin İçeriği -->
+            <div id="admin-content" style="display: none;">
+                <div class="admin-header">
+                    <h1>Haftanın Oylaması - Admin Panel</h1>
+                    <p>Oylama seçeneklerini buradan yönetebilirsiniz</p>
+                </div>
+
+                <!-- Mevcut Oylama Durumu -->
+                <div class="current-poll-status">
+                    <h3>Mevcut Oylama Durumu</h3>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <span class="status-label">Durum:</span>
+                            <span id="current-status" class="status-value">Aktif</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Başlangıç:</span>
+                            <span id="current-start" class="status-value">-</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Bitiş:</span>
+                            <span id="current-end" class="status-value">-</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="status-label">Toplam Oy:</span>
+                            <span id="current-votes" class="status-value">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yeni Oylama Oluştur -->
+                <div class="create-poll-section">
+                    <h3>Yeni Oylama Oluştur</h3>
+                    <form id="create-poll-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="poll-title">Oylama Başlığı:</label>
+                                <input type="text" id="poll-title" value="Bu Haftanın En İyi Kahvesi" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="poll-duration">Süre (gün):</label>
+                                <input type="number" id="poll-duration" value="7" min="1" max="30" required>
+                            </div>
+                        </div>
+
+                        <!-- Seçenekler -->
+                        <div class="options-section">
+                            <div class="section-header">
+                                <h4>Oylama Seçenekleri</h4>
+                                <button type="button" id="add-option-btn" class="add-btn">+ Seçenek Ekle</button>
+                            </div>
+                            <div id="options-container">
+                                <!-- Seçenekler buraya eklenecek -->
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" id="preview-btn" class="preview-btn">Önizleme</button>
+                            <button type="submit" class="create-btn">Oylamayı Başlat</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Mevcut Oylama Sonuçları -->
+                <div class="results-section">
+                    <h3>Mevcut Oylama Sonuçları</h3>
+                    <div id="admin-results-container">
+                        <!-- Sonuçlar buraya yüklenecek -->
+                    </div>
+                    <div class="results-actions">
+                        <button id="export-results-btn" class="export-btn">Sonuçları Dışa Aktar</button>
+                        <button id="reset-votes-btn" class="reset-btn">Oyları Sıfırla</button>
+                        <button id="end-poll-btn" class="end-btn">Oylamayı Sonlandır</button>
+                    </div>
+                </div>
+
+                <!-- Önizleme Modal -->
+                <div id="preview-modal" class="modal" style="display: none;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3>Oylama Önizlemesi</h3>
+                            <span class="close-modal">&times;</span>
+                        </div>
+                        <div class="modal-body">
+                            <div id="preview-content">
+                                <!-- Önizleme içeriği buraya gelecek -->
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="close-modal-btn">Kapat</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="admin-oylama.js"></script>
+</body>
+</html>

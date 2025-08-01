@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haftanın Oylaması - Portre Kahve</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="oylama.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html"><img src="Portre_Logo.png" alt="Portre Kafe Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#hikaye">Hikayemiz</a></li>
+                <li><a href="menu.html">Menü</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="haftanin-oylamasi.html">Haftanın Oylaması</a></li>
+                <li><a href="#">İletişim</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="#">Şubelerimiz</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Oylama Hero Bölümü -->
+    <section id="oylama-hero">
+        <div class="hero-overlay"></div>
+        <video autoplay muted loop id="arkaplan-video">
+            <source src="arkaplan-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-text">
+            <h1>Haftanın Oylaması</h1>
+            <p>Bu hafta hangi kahve favoriniz olsun? Oyunuzu kullanın ve sonuçları görün!</p>
+            <div class="oylama-tarihi">
+                <span id="oylama-baslangic"></span> - <span id="oylama-bitis"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oylama Bölümü -->
+    <section id="oylama-section">
+        <div class="container">
+            <div class="oylama-baslik">
+                <h2>Bu Haftanın Adayları</h2>
+                <p>Aşağıdaki seçeneklerden birini seçin ve oyunuzu kullanın</p>
+            </div>
+
+            <!-- Oylama Durumu -->
+            <div id="oylama-durumu" class="oylama-durumu">
+                <div class="durum-mesaji">
+                    <span id="durum-text">Oylama aktif</span>
+                    <span id="kalan-sure"></span>
+                </div>
+            </div>
+
+            <!-- Oylama Seçenekleri -->
+            <div id="oylama-secenekleri" class="oylama-grid">
+                <!-- Seçenekler JavaScript ile yüklenecek -->
+            </div>
+
+            <!-- Oylama Butonu -->
+            <div class="oylama-buton-container">
+                <button id="oy-ver-btn" class="oy-ver-btn" disabled>
+                    <span class="btn-text">Bir seçenek seçin</span>
+                    <span class="btn-icon">🗳️</span>
+                </button>
+            </div>
+
+            <!-- Sonuçlar Bölümü -->
+            <div id="sonuclar-section" class="sonuclar-section" style="display: none;">
+                <h3>Oylama Sonuçları</h3>
+                <div id="sonuclar-container" class="sonuclar-container">
+                    <!-- Sonuçlar JavaScript ile yüklenecek -->
+                </div>
+                <div class="toplam-oy">
+                    <span>Toplam Oy: <strong id="toplam-oy-sayisi">0</strong></span>
+                </div>
+            </div>
+
+            <!-- Teşekkür Mesajı -->
+            <div id="tesekkur-mesaji" class="tesekkur-mesaji" style="display: none;">
+                <div class="mesaj-icon">✅</div>
+                <h3>Oyunuz Alındı!</h3>
+                <p>Katılımınız için teşekkür ederiz. Sonuçları aşağıda görebilirsiniz.</p>
+            </div>
+
+            <!-- Hata Mesajı -->
+            <div id="hata-mesaji" class="hata-mesaji" style="display: none;">
+                <div class="mesaj-icon">❌</div>
+                <h3>Bir Hata Oluştu</h3>
+                <p id="hata-text">Lütfen daha sonra tekrar deneyin.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Portre Kahve. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="oylama.js"></script>
+</body>
+</html>

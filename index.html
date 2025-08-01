@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Portre Kafe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="#"><img src="Portre_Logo.png" alt="Portre Kafe Logo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#hikaye">Hikayemiz</a></li>
+                <li><a href="menu.html">Menü</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="haftanin-oylamasi.html">Haftanın Oylaması</a></li>
+                <li><a href="#">İletişim</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="#">Şubelerimiz</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <video autoplay muted loop playsinline id="arkaplan-video">
+                <source src="arkaplan-video.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-text">
+                <h1>Kahve Sanatının Portresi</h1>
+                <p>Her fincanda yeni bir hikaye, her yudumda sanatın izleri.</p>
+                <a href="menu.html" class="cta-button">Menümüzü Keşfedin</a>
+            </div>
+        </section>
+
+        <section id="hikaye" class="feature-section fade-in-section">
+            <div class="feature-text">
+                <h2>Hikayemiz</h2>
+                <p>Portre Kafe, kahve tutkusunu ve sanatın ilham verici gücünü bir araya getirme hayaliyle doğdu. Her bir çekirdeğin özenle seçildiği, her bir fincanın bir sanat eseri titizliğiyle hazırlandığı bir mekân yaratmak istedik. Misafirlerimize sadece lezzetli bir kahve değil, aynı zamanda keyifli bir mola, sıcak bir sohbet ve ilham dolu anlar sunuyoruz.</p>
+            </div>
+            <div id="hikaye-image" class="feature-image"></div>
+        </section>
+        
+        <section id="degerler" class="feature-section reverse fade-in-section">
+            <div class="feature-text">
+                <h2>Değerlerimiz</h2>
+                <p>Kalite, tutku ve samimiyet. En kaliteli kahve çekirdeklerini bulur, onları en doğru yöntemlerle demler ve her misafirimize içten bir gülümsemeyle sunarız. Çünkü inanıyoruz ki, iyi bir kahve deneyimi sadece damakta değil, kalpte de iz bırakır. Bu yüzden Portre Kafe, bir kahve dükkanından çok daha fazlasıdır; bir buluşma noktası, bir keyif durağıdır.</p>
+            </div>
+             <div id="degerler-image" class="feature-image"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Portre Kafe. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script src="script.js?v=<?php echo time(); ?>"></script>
+</body>
+</html>

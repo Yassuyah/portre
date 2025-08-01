@@ -1,0 +1,480 @@
+/* --- TEMEL AYARLAR VE SIFIRLAMA --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- YENİ: SCROLL SNAP (KAYDIRMA KİLİTLEME) AYARLARI --- */
+html {
+    scroll-snap-type: y mandatory; /* Dikey eksende ve zorunlu olarak kilitleme */
+}
+
+/* Kilitlenecek olan ana bölümler */
+#hero, .feature-section {
+    scroll-snap-align: center; /* Bölümün dikeyde ortasını ekranın ortasına kilitle */
+    min-height: 100vh; /* Her bölümün en az ekran yüksekliği kadar olmasını sağla */
+    display: flex; /* İçeriği ortalamak için flex kullanacağız */
+    align-items: center;
+}
+/* --- SCROLL SNAP SONU --- */
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.8;
+    color: #f0f0f0;
+    background-color: #1a1a1a;
+}
+
+/* --- HEADER VE NAVİGASYON --- */
+header { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    padding: 1rem 5%; 
+    transition: all 0.4s ease; 
+}
+header.scrolled { 
+    background-color: rgba(0, 0, 0, 0.8); 
+    backdrop-filter: blur(10px); 
+    padding: 0.5rem 5%; 
+}
+nav { 
+    position: relative; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    width: 100%; 
+    transition: all 0.4s ease; 
+}
+.logo { 
+    margin-left: -20px; 
+}
+.logo img { 
+    height: 70px; 
+    transition: all 0.4s ease; 
+}
+header.scrolled .logo img { 
+    height: 55px; 
+}
+.nav-links { 
+    list-style: none; 
+    display: flex; 
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+}
+.nav-links li { 
+    margin: 0 1.5rem; 
+}
+.nav-right {
+    margin-right: -20px;
+}
+.nav-links a, .nav-right a { 
+    text-decoration: none; 
+    color: #fff; 
+    font-weight: bold; 
+    font-size: 1rem;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+/* Hover efektleri - Sadece büyütme */
+.nav-links a:hover, .nav-right a:hover {
+    color: #d4a373;
+    transform: scale(1.1);
+}
+
+header.scrolled .nav-links a, 
+header.scrolled .nav-right a { 
+    font-size: 0.9rem; 
+}
+
+/* --- HERO BÖLÜMÜ --- */
+#hero { /* min-height ve display flex yukarıda tanımlandı */
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: #fff;
+    overflow: hidden;
+}
+#arkaplan-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.hero-overlay { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: -1; }
+.hero-text h1 { font-size: 4.5rem; font-weight: 700; }
+.hero-text p { font-size: 1.25rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+.cta-button { display: inline-block; background-color: #d4a373; color: #1a1a1a; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: all 0.3s ease; border: none; cursor: pointer; }
+.cta-button:hover { background-color: #fff; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+/* --- GÜNCELLENMİŞ ÖZELLİK BÖLÜMLERİ (YAZI + GÖRSEL DÜZENİ) --- */
+.feature-section {
+    /* min-height ve display flex yukarıda tanımlandı */
+    justify-content: center;
+    gap: 5rem;
+    padding: 0 5%; /* Dikey padding scroll-snap'ten dolayı kaldırıldı */
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.feature-section.reverse {
+    flex-direction: row-reverse;
+}
+
+.feature-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.feature-text h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #d4a373;
+}
+
+.feature-text p {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+/* --- YENİ: İNTEGRE EDİLMİŞ PARALLAX GÖRSELLERİ --- */
+.feature-image {
+    flex: 1;
+    height: 70vh; /* Görsel alanının yüksekliği */
+    border-radius: 10px;
+    
+    /* Parallax efektinin sırrı */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Görselleri ID'leri ile atıyoruz. Kendi görsellerinle değiştir! */
+#hikaye-image {
+    background-image: url("https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+}
+
+#degerler-image {
+    background-image: url("https://images.pexels.com/photos/4109744/pexels-photo-4109744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+}
+
+/* Bağımsız parallax bölümü kaldırıldığı için stilleri de silindi. */
+
+/* --- ANİMASYON --- */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- YENİ: MENU GÖRSELLERİ İÇİN ÇEŞİTLİ ANİMASYONLAR --- */
+
+/* Scroll ile tetiklenen animasyonlar için temel ayarlar */
+.feature-image {
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 1. Zoom efekti (Espresso, Latte, Cappuccino için) */
+#image-product-1, #image-product-5, #image-product-6 {
+    transition: transform 0.2s ease;
+}
+#image-product-1.scroll-stopped-animated, #image-product-5.scroll-stopped-animated, #image-product-6.scroll-stopped-animated {
+    transform: scale(1.1) !important;
+}
+
+/* 2. Rotate efekti (Double Espresso, Americano için) */
+#image-product-2, #image-product-4 {
+    transition: transform 0.2s ease;
+}
+#image-product-2.scroll-stopped-animated, #image-product-4.scroll-stopped-animated {
+    transform: rotate(2deg) scale(1.02);
+}
+
+/* 3. Slide efekti (Lungo, Flat White için) */
+#image-product-3, #image-product-7 {
+    transition: transform 0.2s ease;
+}
+#image-product-3.scroll-stopped-animated, #image-product-7.scroll-stopped-animated {
+    transform: translateX(10px);
+}
+
+/* 4. Glow efekti (Mocha, White Mocha için) */
+#image-product-9, #image-product-10 {
+    transition: all 0.2s ease;
+}
+#image-product-9.scroll-stopped-animated, #image-product-10.scroll-stopped-animated {
+    box-shadow: 0 0 30px rgba(212, 163, 115, 0.6);
+    transform: translateY(-5px);
+}
+
+/* 5. Flip efekti (Caramel Macchiato, Cortado için) */
+#image-product-8, #image-product-11 {
+    transition: transform 0.2s ease;
+}
+#image-product-8.scroll-stopped-animated, #image-product-11.scroll-stopped-animated {
+    transform: rotateY(10deg) scale(1.02);
+}
+
+/* 6. Bounce efekti (Filtre Kahve, Türk Kahvesi için) */
+@keyframes bounce {
+    0%, 20%, 60%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    80% { transform: translateY(-5px); }
+}
+#image-product-12.scroll-stopped-animated, #image-product-13.scroll-stopped-animated {
+    animation: bounce 0.2s ease;
+}
+
+/* 7. Pulse efekti (Soğuk kahveler için) */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+#image-product-14.scroll-stopped-animated, #image-product-15.scroll-stopped-animated, #image-product-16.scroll-stopped-animated {
+    animation: pulse 0.2s ease infinite;
+}
+
+/* 8. Shake efekti (Ice Mocha, Ice White Mocha için) */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+#image-product-17.scroll-stopped-animated, #image-product-18.scroll-stopped-animated {
+    animation: shake 0.2s ease;
+}
+
+/* 9. Tilt efekti (Ice Caramel Macchiato, Affogato için) */
+#image-product-19, #image-product-20 {
+    transition: transform 0.2s ease;
+}
+#image-product-19.scroll-stopped-animated, #image-product-20.scroll-stopped-animated {
+    transform: rotate(-3deg) scale(1.02);
+}
+
+/* 10. Gradient overlay efekti (3. nesil demlemeler için) */
+#image-product-21, #image-product-22, #image-product-23, #image-product-24 {
+    position: relative;
+    transition: all 0.2s ease;
+}
+#image-product-21.scroll-stopped-animated, #image-product-22.scroll-stopped-animated, #image-product-23.scroll-stopped-animated, #image-product-24.scroll-stopped-animated {
+    transform: scale(1.03);
+}
+#image-product-21::after, #image-product-22::after, #image-product-23::after, #image-product-24::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(212, 163, 115, 0.3), rgba(212, 163, 115, 0.1));
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+#image-product-21.scroll-stopped-animated::after, #image-product-22.scroll-stopped-animated::after, #image-product-23.scroll-stopped-animated::after, #image-product-24.scroll-stopped-animated::after {
+    opacity: 1;
+}
+
+/* 11. Slide up efekti (Sıcak çikolata, Beyaz sıcak çikolata için) */
+#image-product-25, #image-product-26 {
+    transition: transform 0.2s ease;
+}
+#image-product-25.scroll-stopped-animated, #image-product-26.scroll-stopped-animated {
+    transform: translateY(-8px);
+}
+
+/* 12. Wobble efekti (Chai Tea Latte, Matcha Latte için) */
+@keyframes wobble {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    75% { transform: rotate(-1deg); }
+    100% { transform: rotate(0deg); }
+}
+#image-product-27.scroll-stopped-animated, #image-product-28.scroll-stopped-animated {
+    animation: wobble 0.2s ease;
+}
+
+/* 13. Fade efekti (Salep, Siyah Çay için) */
+#image-product-29, #image-product-30 {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+#image-product-29.scroll-stopped-animated, #image-product-30.scroll-stopped-animated {
+    opacity: 0.8;
+    transform: scale(1.02);
+}
+
+/* 14. Skew efekti (Bitki Çayları, Limonata için) */
+#image-product-31, #image-product-32 {
+    transition: transform 0.2s ease;
+}
+#image-product-31.scroll-stopped-animated, #image-product-32.scroll-stopped-animated {
+    transform: skewX(2deg) scale(1.02);
+}
+
+/* 15. Flip horizontal efekti (Frozen, Milkshake için) */
+#image-product-33, #image-product-34 {
+    transition: transform 0.2s ease;
+}
+#image-product-33.scroll-stopped-animated, #image-product-34.scroll-stopped-animated {
+    transform: scaleX(-1) scale(1.02);
+}
+
+/* 16. Elastic efekti (Soğuk çay, Portakal suyu için) */
+@keyframes elastic {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.1); }
+    60% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+#image-product-35.scroll-stopped-animated, #image-product-36.scroll-stopped-animated {
+    animation: elastic 0.2s ease;
+}
+
+/* 17. Simple hover efekti (Su, Soda için) */
+#image-product-37, #image-product-38 {
+    transition: all 0.3s ease;
+}
+#image-product-37.scroll-stopped-animated, #image-product-38.scroll-stopped-animated {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* 18. Rotate 3D efekti (Tatlılar için) */
+#image-product-39, #image-product-40, #image-product-41 {
+    transition: transform 0.2s ease;
+}
+#image-product-39.scroll-stopped-animated, #image-product-40.scroll-stopped-animated, #image-product-41.scroll-stopped-animated {
+    transform: rotateX(10deg) rotateY(10deg) scale(1.02);
+}
+
+/* 19. Swing efekti (Brownie, Mozaik Pasta için) */
+@keyframes swing {
+    0%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(2deg); }
+    40% { transform: rotate(-1deg); }
+    60% { transform: rotate(1deg); }
+    80% { transform: rotate(-0.5deg); }
+}
+#image-product-42.scroll-stopped-animated, #image-product-43.scroll-stopped-animated {
+    animation: swing 0.2s ease;
+}
+
+/* 20. Heartbeat efekti (Tiramisu için) */
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+#image-product-44.scroll-stopped-animated {
+    animation: heartbeat 0.2s ease infinite;
+}
+
+/* 21. Jello efekti (Cookie, Kruvasan, Poğaça için) */
+@keyframes jello {
+    0%, 100% { transform: scale(1); }
+    30% { transform: scale(1.05) rotate(1deg); }
+    60% { transform: scale(0.98) rotate(-1deg); }
+}
+#image-product-45.scroll-stopped-animated, #image-product-46.scroll-stopped-animated, #image-product-47.scroll-stopped-animated {
+    animation: jello 0.2s ease;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 3rem;
+    background-color: #111;
+    color: #aaa;
+    /* Footer'ın snap noktası olmasını istemiyoruz, bu yüzden ona özel bir ayar gerekebilir. */
+    /* Şimdilik bu şekilde kalabilir. */
+}
+
+/* ================================================= */
+/* --- MENU.HTML SAYFASI İÇİN NİHAİ STİLLER (HER ÜRÜN İÇİN TEK BÖLÜM) --- */
+/* ================================================= */
+
+/* Başlık fontu için */
+h1, h2 { font-family: 'Playfair Display', serif; }
+
+/* Menü sayfasının karşılama alanı */
+#menu-hero { 
+    min-height: 70vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    background-color: #111; 
+    scroll-snap-align: center; 
+    position: relative;
+    overflow: hidden;
+}
+
+#menu-hero video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -2;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+#menu-hero .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+#menu-hero .hero-text {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+/* Ürün adının altındaki fiyat bilgisi için */
+.feature-text h2 span { display: block; font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 400; color: #d4a373; margin-top: 0.5rem; }
+.feature-text p { font-size: 1.1rem; color: #ccc; margin-top: 1rem; max-width: 450px; }
+
+
+/* --- 47 ÜRÜN İÇİN GÖRSEL ATAMALARI --- */
+/* Not: Stok görseller ürün tiplerine göre tekrar tekrar kullanılmıştır. Lütfen kendi ürün fotoğraflarınızla değiştirin. */
+
+/* Sıcak Kahveler */
+#image-product-1, #image-product-2, #image-product-3, #image-product-4, #image-product-8 { background-image: url("https://images.pexels.com/photos/312418/pexels-photo-312418.jpeg"); }
+#image-product-5, #image-product-6, #image-product-7 { background-image: url("https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg"); }
+#image-product-9, #image-product-10, #image-product-11 { background-image: url("https://images.pexels.com/photos/3727250/pexels-photo-3727250.jpeg"); }
+#image-product-12, #image-product-13 { background-image: url("https://images.pexels.com/photos/982612/pexels-photo-982612.jpeg"); }
+
+/* Soğuk Kahveler */
+#image-product-14, #image-product-15, #image-product-16, #image-product-17, #image-product-18, #image-product-19, #image-product-20 { background-image: url("https://images.pexels.com/photos/1195350/pexels-photo-1195350.jpeg"); }
+
+/* 3. Nesil Demlemeler */
+#image-product-21, #image-product-22, #image-product-23, #image-product-24 { background-image: url("https://images.pexels.com/photos/3736341/pexels-photo-3736341.jpeg"); }
+
+/* Diğer Sıcak & Soğuk İçecekler */
+#image-product-25, #image-product-26, #image-product-29 { background-image: url("https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg"); }
+#image-product-27, #image-product-28, #image-product-30, #image-product-31 { background-image: url("https://images.pexels.com/photos/227908/pexels-photo-227908.jpeg"); }
+#image-product-32, #image-product-33, #image-product-34, #image-product-35, #image-product-36 { background-image: url("https://images.pexels.com/photos/1188506/pexels-photo-1188506.jpeg"); }
+#image-product-37, #image-product-38 { background-image: url("https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg"); }
+
+/* Tatlılar & Atıştırmalıklar */
+#image-product-39, #image-product-44 { background-image: url("https://images.pexels.com/photos/3674173/pexels-photo-3674173.jpeg"); }
+#image-product-40, #image-product-41, #image-product-43 { background-image: url("https://images.pexels.com/photos/1854037/pexels-photo-1854037.jpeg"); }
+#image-product-42 { background-image: url("https://images.pexels.com/photos/2067423/pexels-photo-2067423.jpeg"); }
+#image-product-45, #image-product-46, #image-product-47 { background-image: url("https://images.pexels.com/photos/2638026/pexels-photo-2638026.jpeg"); }
